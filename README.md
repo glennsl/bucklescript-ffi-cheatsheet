@@ -1,5 +1,7 @@
 # BuckleScript FFI cheatsheet
 
+NOTE: The translations given here might not be literally correct. The output will in some instances be slightly simplified to improve clarity.
+
 ## Basic
 
 ### [bs.val](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_global_value_bs_val)
