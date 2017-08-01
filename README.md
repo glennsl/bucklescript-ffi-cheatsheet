@@ -200,9 +200,40 @@ f(a, c);
 ## Extensions
 
 ### [bs.re](https://bucklescript.github.io/bucklescript/Manual.html#_regex_support)
+```ml
+let re = [%re "/na/gi"]
+```
+```js
+var re = /na/gi;
+```
+
 ### [bs.obj](https://bucklescript.github.io/bucklescript/Manual.html#_create_js_objects_using_bs_obj)
+```ml
+let obj = [%obj { property = "value" }]
+```
+```js
+var obj = {
+  property: "value"
+};
+```
+
 ### [bs.raw](https://bucklescript.github.io/bucklescript/Manual.html#_embedding_raw_js_code_as_statements)
+```ml
+let raw = [%raw "1 + 2 == 3"]
+```
+```js
+var raw = (1 + 2 == 3);
+
+```
+
 ### [bs.debugger](https://bucklescript.github.io/bucklescript/Manual.html#_debugger_support)
+```ml
+[%debugger]
+```
+```js
+debugger;
+```
+
 ### [bs.external](https://bucklescript.github.io/bucklescript/Manual.html#_detect_global_variable_existence_code_bs_external_code_since_1_5_1)
 ### [bs.node](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_nodejs_special_variables_bs_node)
 
