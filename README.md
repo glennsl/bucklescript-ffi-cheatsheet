@@ -182,6 +182,18 @@ let _ = f `a
 f(0);
 ```
 
+### [bs.unwrap](https://bucklescript.github.io/bucklescript/Manual.html#_using_polymorphic_variant_to_model_arguments_of_multiple_possible_types_since_1_8_3)
+```ml
+(* ml *)
+external f : ([`int of int] [@bs.unwrap]) -> unit = "" [@@bs.val]
+
+let _ = f (`a 42)
+```
+```js
+// js
+f(42);
+```
+
 ### [bs.ignore](https://bucklescript.github.io/bucklescript/Manual.html#_phantom_arguments_and_ad_hoc_polymorphism)
 ```ml
 (* ml *)
