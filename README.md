@@ -187,7 +187,7 @@ f(0);
 (* ml *)
 external f : ([`int of int] [@bs.unwrap]) -> unit = "" [@@bs.val]
 
-let _ = f (`a 42)
+let _ = f (`int 42)
 ```
 ```js
 // js
