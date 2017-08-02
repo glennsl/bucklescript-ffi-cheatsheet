@@ -215,17 +215,21 @@ f(a, c);
 
 ### [bs.re](https://bucklescript.github.io/bucklescript/Manual.html#_regex_support)
 ```ml
+(* ml *)
 let re = [%re "/na/gi"]
 ```
 ```js
+// js
 var re = /na/gi;
 ```
 
 ### [bs.obj](https://bucklescript.github.io/bucklescript/Manual.html#_create_js_objects_using_bs_obj)
 ```ml
+(* ml *)
 let obj = [%obj { property = "value" }]
 ```
 ```js
+// js
 var obj = {
   property: "value"
 };
@@ -233,18 +237,21 @@ var obj = {
 
 ### [bs.raw](https://bucklescript.github.io/bucklescript/Manual.html#_embedding_raw_js_code_as_statements)
 ```ml
+(* ml *)
 let raw = [%raw "1 + 2 == 3"]
 ```
 ```js
+// js
 var raw = (1 + 2 == 3);
-
 ```
 
 ### [bs.debugger](https://bucklescript.github.io/bucklescript/Manual.html#_debugger_support)
 ```ml
+(* ml *)
 [%debugger]
 ```
 ```js
+// js
 debugger;
 ```
 
