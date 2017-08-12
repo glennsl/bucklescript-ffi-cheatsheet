@@ -1,6 +1,6 @@
 # BuckleScript FFI cheatsheet
 
-NOTE: The translations given here might not be literally correct. The output will in some instances be slightly simplified to improve clarity.
+NOTE: The translations given here might not be literally correct. The output will in some instances have been simplified slightly to improve clarity.
 
 ## Basic
 
