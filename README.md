@@ -4,7 +4,7 @@ NOTE: The translations given here might not be literally correct. The output wil
 
 ## Basic
 
-### [bs.val](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_global_value_bs_val)
+### [bs.val](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_global_value_code_bs_val_code)
 ```ml
 (* ml *)
 external f : 'a -> 'b -> 'ret = "" [@@bs.val]
@@ -16,7 +16,7 @@ let ret = f a b
 var ret = f(a, b);
 ```
 
-### [bs.get](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_getter_setter_bs_get_bs_set)
+### [bs.get](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_getter_setter_code_bs_get_code_code_bs_set_code)
 ```ml
 (* ml *)
 external f : 'self -> 'ret = "" [@@bs.get]
@@ -28,7 +28,7 @@ let ret = f self
 var ret = self.f;
 ```
 
-### [bs.set](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_getter_setter_bs_get_bs_set)
+### [bs.set](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_getter_setter_code_bs_get_code_code_bs_set_code)
 ```ml
 (* ml *)
 external f : 'self -> 'a -> 'ret = "" [@@bs.set]
@@ -40,7 +40,7 @@ let ret = f self a
 var ret = self.f = a;
 ```
 
-### [bs.send](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_method_bs_send_bs_send_pipe)
+### [bs.send](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_method_code_bs_send_code_code_bs_send_pipe_code)
 ```ml
 (* ml *)
 external f : 'self -> 'a -> 'b -> 'ret = "" [@@bs.send]
@@ -52,7 +52,7 @@ let ret = f self a b
 var ret = self.f(a, b);
 ```
 
-### [bs.send.pipe](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_method_bs_send_bs_send_pipe)
+### [bs.send.pipe](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_method_code_bs_send_code_code_bs_send_pipe_code)
 ```ml
 (* ml *)
 external f : 'a -> 'b -> 'ret = "" [@@bs.send.pipe: 'self]
@@ -66,7 +66,7 @@ let ret = self |> f a b
 var ret = self.f(a, b);
 ```
 
-### [bs.new](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_javascript_constructor_bs_new)
+### [bs.new](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_javascript_constructor_code_bs_new_code)
 ```ml
 (* ml *)
 external f : unit -> 'ret = "" [@@bs.new]
@@ -78,7 +78,7 @@ let ret = f ()
 var ret = new f();
 ```
 
-### [bs.module](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_a_value_from_a_module_bs_module)
+### [bs.module](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_a_value_from_a_module_code_bs_module_code)
 ```ml
 (* ml *)
 external f : unit -> unit = "" [@@bs.module "m"]
@@ -91,7 +91,7 @@ var m = require('m');
 m.f();
 ```
 
-### [bs.get_index](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_dynamic_key_access_set_bs_set_index_bs_get_index)
+### [bs.get_index](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_dynamic_key_access_set_code_bs_set_index_code_code_bs_get_index_code)
 ```ml
 (* ml *)
 external f : 'self -> 'key -> 'ret = "" [@@bs.get_index]
@@ -103,7 +103,7 @@ let ret = f self key
 var ret = self[key];
 ```
 
-### [bs.set_index](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_dynamic_key_access_set_bs_set_index_bs_get_index)
+### [bs.set_index](https://bucklescript.github.io/bucklescript/Manual.html#_binding_to_dynamic_key_access_set_code_bs_set_index_code_code_bs_get_index_code)
 ```ml
 (* ml *)
 external f : 'self -> 'key -> 'a -> 'ret = "" [@@bs.set_index]
