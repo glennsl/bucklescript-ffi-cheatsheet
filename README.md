@@ -11,6 +11,12 @@ external f : 'a -> 'b -> 'ret = "" [@@bs.val]
 
 let ret = f a b
 ```
+```reason
+/* re */
+[@bs.val] external f : ('a, 'b) => 'ret = "";
+
+let ret = f(a, b);
+```
 ```js
 // js
 var ret = f(a, b);
@@ -22,6 +28,12 @@ var ret = f(a, b);
 external f : 'self -> 'ret = "" [@@bs.get]
 
 let ret = f self
+```
+```reason
+/* re */
+[@bs.get] external f : 'self => 'ret = "";
+
+let ret = f(self);
 ```
 ```js
 // js
@@ -35,6 +47,12 @@ external f : 'self -> 'a -> 'ret = "" [@@bs.set]
 
 let ret = f self a
 ```
+```reason
+/* re */
+[@bs.set] external f : ('self, 'a) => 'ret = "";
+
+let ret = f(self, a);
+```
 ```js
 // js
 var ret = self.f = a;
@@ -46,6 +64,12 @@ var ret = self.f = a;
 external f : 'self -> 'a -> 'b -> 'ret = "" [@@bs.send]
 
 let ret = f self a b
+```
+```reason
+/* re */
+[@bs.send] external f : ('self, 'a, 'b) => 'ret = "";
+
+let ret = f(self, a, b);
 ```
 ```js
 // js
@@ -61,6 +85,14 @@ let ret = f a b self
 (* or *)
 let ret = self |> f a b
 ```
+```reason
+/* re */
+[@bs.send.pipe: 'self] external f : ('a, 'b) => 'ret = "";
+
+let ret = f(a, b, self);
+/* or */
+let ret = self |> f(a, b);
+```
 ```js
 // js
 var ret = self.f(a, b);
@@ -73,6 +105,12 @@ external f : unit -> 'ret = "" [@@bs.new]
 
 let ret = f ()
 ```
+```reason
+/* re */
+[@bs.new] external f : unit => 'ret = "";
+
+let ret = f();
+```
 ```js
 // js
 var ret = new f();
@@ -84,6 +122,12 @@ var ret = new f();
 external f : unit -> unit = "" [@@bs.module "m"]
 
 let _ = f ()
+```
+```reason
+/* re */
+[@bs.module "m"] external f : unit => unit = "";
+
+f();
 ```
 ```js
 // js
@@ -98,6 +142,12 @@ external f : 'self -> 'key -> 'ret = "" [@@bs.get_index]
 
 let ret = f self key
 ```
+```reason
+/* re */
+[@bs.get_index] external f : ('self, 'key) => 'ret = "";
+
+let ret = f(self, key);
+```
 ```js
 // js
 var ret = self[key];
@@ -109,6 +159,12 @@ var ret = self[key];
 external f : 'self -> 'key -> 'a -> 'ret = "" [@@bs.set_index]
 
 let ret = f self key a
+```
+```reason
+/* re */
+[@bs.set_index] external f : ('self, 'key, 'a) => 'ret = "";
+
+let ret = f(self, key, a);
 ```
 ```js
 // js
@@ -125,6 +181,12 @@ external f : 'a -> 'b array -> 'ret = "" [@@bs.val] [@@bs.splice]
 
 let ret = f a [|b1; b2; b3|]
 ```
+```reason
+/* re */
+[@bs.val] [@bs.splice] external f : ('a, array('b)) => 'ret = "";
+
+let ret = f(a, [|b1, b2, b3|]);
+```
 ```js
 // js
 var ret = f(a, b1, b2, b3);
@@ -136,6 +198,12 @@ var ret = f(a, b1, b2, b3);
 external f : unit -> unit = "" [@@bs.val] [@@bs.scope "a", "b"]
 
 let _ = f ()
+```
+```reason
+/* re */
+[@bs.val] [@bs.scope ("a", "b")] external f : unit => unit = "";
+
+f();
 ```
 ```js
 // js
@@ -149,9 +217,15 @@ a.b.f();
 ### [bs.as](https://bucklescript.github.io/bucklescript/Manual.html#_fixed_arguments)
 ```ml
 (* ml *)
-external f : 'a -> _ [@bs.as "b"] -> 'c -> unit = "" [@@bs.val]
+external f : 'a -> (_ [@bs.as "b"]) -> 'c -> unit = "" [@@bs.val]
 
 let _ = f a c
+```
+```reason
+/* re */
+[@bs.val] external f : ('a, [@bs.as "b"] _, 'c) => unit = "";
+
+f(a, c);
 ```
 ```js
 // js
@@ -165,6 +239,12 @@ external f : ([`a] [@bs.string]) -> unit = "" [@@bs.val]
 
 let _ = f `a
 ```
+```reason
+/* re */
+[@bs.val] external f : ([@bs.string] [`a]) => unit = "";
+
+f(`a);
+```
 ```js
 // js
 f("a");
@@ -176,6 +256,12 @@ f("a");
 external f : ([`a] [@bs.int]) -> unit = "" [@@bs.val]
 
 let _ = f `a
+```
+```reason
+/* re */
+[@bs.val] external f : ([@bs.int] [`a]) => unit = "";
+
+f(`a);
 ```
 ```js
 // js
@@ -189,6 +275,12 @@ external f : ([`int of int] [@bs.unwrap]) -> unit = "" [@@bs.val]
 
 let _ = f (`int 42)
 ```
+```reason
+/* re */
+[@bs.val] external f : ([@bs.unwrap] [`int(int)]) => unit = "";
+
+f(`int(42));
+```
 ```js
 // js
 f(42);
@@ -197,9 +289,15 @@ f(42);
 ### [bs.ignore](https://bucklescript.github.io/bucklescript/Manual.html#_phantom_arguments_and_ad_hoc_polymorphism)
 ```ml
 (* ml *)
-external f : 'a -> 'b [@bs.ignore] -> 'c -> unit = "" [@@bs.val]
+external f : 'a -> ('b [@bs.ignore]) -> 'c -> unit = "" [@@bs.val]
 
 let _ = f a b c
+```
+```reason
+/* re */
+[@bs.val] external f : ('a, [@bs.ignore] 'b, 'c) => unit = "";
+
+f(a, b, c);
 ```
 ```js
 // js
@@ -218,6 +316,10 @@ f(a, c);
 (* ml *)
 let re = [%re "/na/gi"]
 ```
+```reason
+/* re */
+let re = [%re "/na/gi"];
+```
 ```js
 // js
 var re = /na/gi;
@@ -227,6 +329,10 @@ var re = /na/gi;
 ```ml
 (* ml *)
 let obj = [%obj { property = "value" }]
+```
+```reason
+/* re */
+let obj = [%obj {property: "value"}];
 ```
 ```js
 // js
@@ -240,6 +346,10 @@ var obj = {
 (* ml *)
 let raw = [%raw "1 + 2 == 3"]
 ```
+```reason
+/* re */
+let raw = [%raw "1 + 2 == 3"];
+```
 ```js
 // js
 var raw = (1 + 2 == 3);
@@ -249,6 +359,10 @@ var raw = (1 + 2 == 3);
 ```ml
 (* ml *)
 [%debugger]
+```
+```reason
+/* re */
+[%debugger];
 ```
 ```js
 // js
