@@ -332,7 +332,7 @@ let obj = [%obj { property = "value" }]
 ```
 ```reason
 /* re */
-let obj = [%obj {property: "value"}];
+let obj = {"property": "value"};
 ```
 ```js
 // js
