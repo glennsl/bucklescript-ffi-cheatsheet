@@ -347,14 +347,23 @@ var obj = {
 ```ml
 (* ml *)
 let raw = [%raw "1 + 2 == 3"]
+[%%raw "var jsVar = 1"]
+let myFunction = [%raw fun a b -> "return a + b;"];
 ```
 ```reason
 /* re */
 let raw = [%raw "1 + 2 == 3"];
+[%%raw "var jsVar = 1"];
+let myFunction = [%raw (a, b) => "return a + b;"];
 ```
 ```js
 // js
 var raw = (1 + 2 == 3);
+
+var jsVar = 1
+;
+
+function myFunction (a,b){return a + b;};
 ```
 
 ### [bs.debugger](https://bucklescript.github.io/bucklescript/Manual.html#_debugger_support)
