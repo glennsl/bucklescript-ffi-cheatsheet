@@ -344,6 +344,9 @@ var obj = {
 ```
 
 ### [bs.raw](https://bucklescript.github.io/bucklescript/Manual.html#_embedding_raw_js_code_as_statements)
+
+#### Expression
+
 ```ml
 (* ml *)
 let raw = [%raw "1 + 2 == 3"]
@@ -355,6 +358,43 @@ let raw = [%raw "1 + 2 == 3"];
 ```js
 // js
 var raw = (1 + 2 == 3);
+```
+
+#### Function
+
+```ml
+(* ml *)
+let myFunction = [%raw fun a b -> "return a + b;"];
+```
+```reason
+/* re */
+let myFunction = [%raw (a, b) => "return a + b;"];
+```
+```js
+// js
+function myFunction (a, b) { return a + b; };
+```
+
+#### Block
+
+```ml
+(* ml *)
+[%%raw {|
+  var a = 1;
+  var b = a + 2;
+|}]
+```
+```reason
+/* re */
+[%%raw {|
+  var a = 1;
+  var b = a + 2;
+|}];
+```
+```js
+// js
+var a = 1;
+var b = a + 2;
 ```
 
 ### [bs.debugger](https://bucklescript.github.io/bucklescript/Manual.html#_debugger_support)
